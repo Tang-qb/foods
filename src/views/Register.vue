@@ -68,7 +68,8 @@ export default {
 .register {
   width: 100%;
   height: 100%;
-  background: url("../assets/logo.jpg") 0 / cover fixed;
+  /* background: url("../assets/logo.jpg") 0 / cover fixed; */
+  background: #f8f8f8;
 }
 .register_group {
   position: fixed;
@@ -76,7 +77,7 @@ export default {
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
   width: 600px;
-  height: 400px;
+  height: 399px;
   background: #fff;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 }

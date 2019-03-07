@@ -29,7 +29,83 @@ export default new Router({
     {
       path: '/me',
       name: 'me',
-      component: () => import ('./views/Me')
+      component: () => import ('./views/Me'),
+      redirect: '/me/myMessage',
+      children: [
+        {
+          path: 'myMessage',
+          name: 'myMessage',
+          component: () => import ('./views/Mymessage'),
+        },
+        {
+          path: 'order',
+          name: 'order',
+          component: () => import ('./views/module/Order'),
+          // redirect: '/all',
+          // children: [
+          //   {
+          //     path: 'all',
+          //     name: 'all',
+          //     component: () => import ('./views/Order/All')
+          //   },
+          //   {
+          //     path: 'pay',
+          //     name: 'pay',
+          //     component: () => import ('./views/Order/Pay')
+          //   },
+          //   {
+          //     path: 'evaluate',
+          //     name: 'evaluate',
+          //     component: () => import ('./views/Order/Evaluate')
+          //   },
+          //   {
+          //     path: 'finish',
+          //     name: 'finish',
+          //     component: () => import ('./views/Order/Finish')
+          //   },
+          //   {
+          //     path: 'receiving',
+          //     name: 'receiving',
+          //     component: () => import ('./views/Order/Receiving')
+          //   },
+          //   {
+          //     path: 'ship',
+          //     name: 'ship',
+          //     component: () => import ('./views/Order/Ship')
+          //   },
+          // ]
+        },
+        {
+          path: 'balance',
+          name: 'balance',
+          component: () => import ('./views/module/Balance')
+        },
+        {
+          path: 'change',
+          name: 'change',
+          component: () => import ('./views/module/Change')
+        },
+        {
+          path: 'account',
+          name: 'account',
+          component: () => import ('./views/module/Account')
+        },
+        {
+          path: 'editor',
+          name: 'editor',
+          component: () => import ('./views/module/Editor')
+        },
+        {
+          path: 'address',
+          name: 'address',
+          component: () => import ('./views/module/Address')
+        },
+        {
+          path: 'collect',
+          name: 'collect',
+          component: () => import ('./views/module/Collect')
+        }
+      ]
     },
     {
       path: '/cart',
@@ -40,6 +116,11 @@ export default new Router({
       path: '/detail',
       name: 'detail',
       component: () => import ('./views/Detail')
-    }
+    },
+    {
+      path: '/concat',
+      name: 'concat',
+      component: () => import ('./views/Concat')
+    },
   ]
 })

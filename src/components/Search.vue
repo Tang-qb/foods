@@ -61,21 +61,24 @@ export default {
           .text{
             width: 465px;
             height: 36px;
-            border: 1px solid #31bbac;
+            border: 1px solid #ff6700;
             border-top-left-radius: 5px;
             border-bottom-left-radius: 5px;
             padding-left: 10px;
             font-size: 15px;
             outline: none;
-            color: #31bbac;
+            color: #757575;
           }
           .el-button{
             position: relative;
             top: -1px;
             padding: 12px 30px;
-            background: #13D1BE;
-            border-color: #13D1BE;
+            background: #ff6700;
+            border-color: #ff6700;
             margin-left: -2px;
+          }
+          input::placeholder{
+            color: #ff6700;
           }
         }
         .head-content{
@@ -85,7 +88,7 @@ export default {
           a{
             color: #999;
             &:hover{
-              color: #31bbac;
+              color: #ff6700;
             }
           }
           li{

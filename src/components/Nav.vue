@@ -5,12 +5,11 @@
         <router-link to="/login" class="login">立即登录</router-link>
         <router-link to="/register" class="register">注册</router-link>
       </div>
-      <div class="rihgt">
-        <a href="#">个人中心</a>
-        <a href="#">会员专区</a>
-        <a href="#">网站导航</a>
-        <a href="#">关于我们</a>
-        <a href="#">联系我们</a>
+      <div class="right">
+        <router-link to="/me">个人中心</router-link>
+        <router-link to="/">关于我们</router-link>
+        <router-link to="/concat">联系我们</router-link>
+        <router-link to="/cart" class="cart">购物车</router-link>
       </div>
     </div>
   </div>
@@ -45,11 +44,29 @@ export default {
       padding: 0 10px;
       color: #999;
       &:hover{
-        color: #31BBAC;
+        color: #ff6700;
       }
     }
     .login{
-      color: #31BBAC;
+      color: #ff6700;
+    }
+    .right{
+      display: flex;
+      align-items: center;
+      .cart{
+        display: inline-block;
+        background: #ff6700;
+        padding: 0 20px;
+        height: 40px;
+        line-height: 40px;
+        color: #fff;
+        transition: all .5s;
+        &:hover{
+          background: #fff;
+          color: #ff6700;
+          transition: all .5s;
+        }
+      }
     }
   }
 </style>

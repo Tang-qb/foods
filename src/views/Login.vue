@@ -41,15 +41,32 @@ export default {
   },
   methods: {
     login(){
-      
+      console.log(111)
+      if (!this.getEmail()){
+        this.$message({
+          showClose: true,
+          message: '邮箱格式错误，请重新输入',
+          type: 'error'
+        });
+      }else{
+        this.$message({
+          showClose: true,
+          message: '登录成功',
+          type: 'success'
+        });
+        this.$router.push('/index')
+      }
     },
     getEmail(){
       if (this.email == ''){
         this.errors.email = '邮箱不能为空'
+        return false
       }else if (!/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/.test(this.email)){
         this.errors.email = '格式错误，请重新输入'
+        return false
       }else{
         this.errors.email = ''
+        return true
       }
     }
   }
@@ -60,7 +77,8 @@ export default {
 .login {
   width: 100%;
   height: 100%;
-  background: url("../assets/logo.jpg") 0 / cover fixed;
+  /* background: url("../assets/logo.jpg") 0 / cover fixed; */
+  background: #f8f8f8;
 }
 .login_group {
   position: fixed;

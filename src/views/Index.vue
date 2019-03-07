@@ -44,9 +44,6 @@
         </ul>
       </div>
     </div>
-    <div class="port">
-      <img src="../assets/footer.png" alt="">
-    </div>
     <Footer/>
   </div>
 </template>
@@ -210,14 +207,14 @@ export default {
         margin-top: 10px;
         transition: all 1s;
         &:hover {
-          border: 1px solid #31bbac;
+          border: 1px solid #ff6700;
           transition: all 1s;
         }
         > p {
           display: flex;
           justify-content: space-between;
           position: relative;
-          color: #31bbac;
+          color: #ff6700;
           margin: 10px;
           span {
             font-size: 20px;
@@ -247,7 +244,7 @@ export default {
           line-height: 16px;
           &:hover{
             text-decoration: underline;
-            color: #31bbac;
+            color: #ff6700;
           }
         }
         .address {
@@ -257,10 +254,6 @@ export default {
     }
   }
   
-}
-.port{
-  width: 1190px;
-  margin: 20px auto 0;
 }
 </style>
 
