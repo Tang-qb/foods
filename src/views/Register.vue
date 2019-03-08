@@ -18,7 +18,7 @@
           <i class="password"></i>
         </div>
         <p class="go">已有账号?<router-link to="/login">去登录</router-link></p>
-        <button :disabled="isClick" @click="register">登录</button>
+        <button :disabled="isClick" @click="register">注册</button>
       </div>
     </div>
   </div>
@@ -46,11 +46,6 @@ export default {
     }
   },
   methods: {
-    register(){
-      if (this.password !== this.refPassword) {
-        this.$message.error('两次密码不一致,请重新输入密码')
-      }
-    },
     getEmail(){
       if (this.email == ''){
         this.errors.email = '邮箱不能为空'
@@ -59,6 +54,38 @@ export default {
       }else{
         this.errors.email = ''
       }
+    },
+    register() {
+      if (this.errors.email){
+        // console.log(this.errors.email)
+        this.$message.error('邮箱格式错误,请重新输入')
+      }else if (this.password !== this.refPassword) {
+        this.$message.error('两次密码不一致,请重新输入密码')
+      }else if (this.email && this.password && this.refPassword) {
+        let formData = {
+          name: Math.floor(Math.random() * 1000000000000),
+          email: this.email,
+          password: this.password
+        }
+        console.log(formData)
+        this.$axios.post('http://localhost:5000/api/users/register', formData)
+                  .then(res =>{
+                    console.log(res.data)
+                    if (res.data.status == -1) {
+                      this.$message.error(`${res.data.email}，请更换邮箱`)
+                    }else{
+                      this.$message({
+                          message: '注册成功',
+                          type: 'success'
+                        })
+                      }
+                      this.$router.push('/login')
+                  })
+                  .catch(err => {
+                    console.log(err)
+                  })
+      }
+      
     }
   }
 };

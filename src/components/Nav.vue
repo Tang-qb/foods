@@ -7,7 +7,7 @@
       </div>
       <div class="right">
         <router-link to="/me">个人中心</router-link>
-        <router-link to="/">关于我们</router-link>
+        <router-link to="/about">关于我们</router-link>
         <router-link to="/concat">联系我们</router-link>
         <router-link to="/cart" class="cart">购物车</router-link>
       </div>

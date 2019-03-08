@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-export default new Router({
+const router =  new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -27,10 +27,16 @@ export default new Router({
       component: () => import ('./views/Login')
     },
     {
+      path: '/about',
+      name: 'about',
+      component: () => import ('./views/About')
+    },
+    {
       path: '/me',
       name: 'me',
       component: () => import ('./views/Me'),
       redirect: '/me/myMessage',
+      meta: {requireAuth: true},
       children: [
         {
           path: 'myMessage',
@@ -110,7 +116,8 @@ export default new Router({
     {
       path: '/cart',
       name: 'cart',
-      component: () => import ('./views/Cart')
+      component: () => import ('./views/Cart'),
+      meta: {requireAuth: true}
     },
     {
       path: '/detail',
@@ -124,3 +131,5 @@ export default new Router({
     },
   ]
 })
+
+export default router

@@ -41,7 +41,6 @@ export default {
   },
   methods: {
     login(){
-      console.log(111)
       if (!this.getEmail()){
         this.$message({
           showClose: true,
@@ -49,12 +48,28 @@ export default {
           type: 'error'
         });
       }else{
-        this.$message({
-          showClose: true,
-          message: '登录成功',
-          type: 'success'
-        });
-        this.$router.push('/index')
+        let formData = {
+          email: this.email,
+          password: this.password
+        }
+        this.$axios.post('http://localhost:5000/api/users/login', formData)
+                  .then(res => {
+                    if (res.data.status == -2){
+                      this.$message.error(`${res.data.email}, 请重新输入用户名`)
+                    }else if (res.data.status == -1){
+                      this.$message.error(`${res.data.password}, 请重新输入密码`)
+                    }else if (res.data.status == 1){
+                      this.$message({
+                        message: res.data.msg,
+                        type: 'success'
+                      })
+                      localStorage.setItem('user', JSON.stringify(res.data.user))
+                      this.$router.push('/index')
+                    }
+                  })
+                  .catch(err => {
+                    console.log(err)
+                  })
       }
     },
     getEmail(){

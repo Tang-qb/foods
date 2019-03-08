@@ -11,6 +11,9 @@
             <p>
               <router-link to="">修改个人信息></router-link>
             </p>
+            <p>
+              <a href="javascript:;" @click="loginOut">注销></a>
+            </p>
           </div>
           <div class="right">
             <p>账户安全: <span>普通</span></p>
@@ -63,6 +66,12 @@ export default {
 
       }
     },
+    methods: {
+      loginOut() {
+        localStorage.removeItem('user')
+        this.$router.push('/login')
+      }
+    }
 };
 </script>
 
@@ -113,6 +122,19 @@ export default {
             a{
               color: #ff6700;
             }
+          }
+          &:nth-child(4){
+            a{
+              font-size: 14px;
+              color: #ff6700;
+              cursor: pointer;
+              padding-top: 5px;
+              &:hover{
+                text-decoration: underline;
+              }
+            }
+            
+            
           }
         }
       }
