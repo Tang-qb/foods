@@ -6,6 +6,7 @@
         <router-link to="/register" class="register">注册</router-link>
       </div>
       <div class="right">
+        <router-link to="/">首页</router-link>
         <router-link to="/me">个人中心</router-link>
         <router-link to="/about">关于我们</router-link>
         <router-link to="/concat">联系我们</router-link>

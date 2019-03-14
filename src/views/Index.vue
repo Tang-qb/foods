@@ -3,9 +3,9 @@
     <router-view></router-view>
     <Nav/>
     <Search/>
-    <el-carousel :interval="4000" type="card" height="200px">
-      <el-carousel-item v-for="item in 6" :key="item">
-        <h3></h3>
+    <el-carousel :interval="4000" type="card" height="380px">
+      <el-carousel-item v-for="(item, index) in carousel" :key="index">
+        <img :src="item" alt="" width="100%" height="" >
       </el-carousel-item>
     </el-carousel>
     <div class="foods">
@@ -62,6 +62,7 @@ import img7 from "@/assets/item7.jpg";
 import img8 from "@/assets/item8.jpg";
 import img9 from "@/assets/item9.jpg";
 import img10 from "@/assets/item10.jpg";
+import carousel1 from '@/assets/carousel/1.jpg'
 export default {
   name: "index",
   data() {
@@ -147,7 +148,8 @@ export default {
           address: "四川成都",
           pic: img10
         }
-      ]
+      ],
+      carousel: [carousel1, carousel1, carousel1, carousel1]
     };
   },
   components: {

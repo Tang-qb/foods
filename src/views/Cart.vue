@@ -30,7 +30,7 @@
               <img src="../assets/item9.jpg" alt="">
             </div>
             <div class="col-title">	
-              小米MIX 3 全网通版 8GB内存 黑色 256G
+              花椒
             </div>
             <div class="col-price">3999元</div>
             <div class="col-num">

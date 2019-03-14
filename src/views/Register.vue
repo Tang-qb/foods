@@ -57,7 +57,6 @@ export default {
     },
     register() {
       if (this.errors.email){
-        // console.log(this.errors.email)
         this.$message.error('邮箱格式错误,请重新输入')
       }else if (this.password !== this.refPassword) {
         this.$message.error('两次密码不一致,请重新输入密码')
@@ -67,23 +66,19 @@ export default {
           email: this.email,
           password: this.password
         }
-        console.log(formData)
-        this.$axios.post('http://localhost:5000/api/users/register', formData)
-                  .then(res =>{
-                    console.log(res.data)
-                    if (res.data.status == -1) {
-                      this.$message.error(`${res.data.email}，请更换邮箱`)
-                    }else{
-                      this.$message({
-                          message: '注册成功',
-                          type: 'success'
-                        })
-                      }
-                      this.$router.push('/login')
-                  })
-                  .catch(err => {
-                    console.log(err)
-                  })
+        this.$axios.post('http://127.0.0.1:12306/register', formData)
+            .then(res => {
+              if (res.data.status == 1) {
+                this.$message({
+                  message: res.data.msg,
+                  type: 'success'
+                })
+                this.$router.push('/login')
+              }
+              else this.$message.error(res.data.msg)
+            })
+            .catch(err => console.log(err))
+
       }
       
     }

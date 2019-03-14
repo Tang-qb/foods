@@ -6,7 +6,7 @@
         </div>
         <div class="me">
           <div class="left">
-            <p>2196589655</p>
+            <p>{{user.userName}}</p>
             <p>早上好~</p>
             <p>
               <router-link to="">修改个人信息></router-link>
@@ -17,10 +17,10 @@
           </div>
           <div class="right">
             <p>账户安全: <span>普通</span></p>
-            <p>绑定手机: <span>158**21</span></p>
+            <p>绑定手机: <span>{{user.phone}}</span></p>
             <p>
-              绑定邮箱:
-              <button>绑定</button>
+              邮箱: {{user.email}}
+              <!-- <button>绑定</button> -->
             </p>
           </div>
         </div>
@@ -63,14 +63,29 @@ export default {
     name: 'my_message',
     data() {
       return {
-
+        user: {}
       }
     },
     methods: {
       loginOut() {
-        localStorage.removeItem('user')
-        this.$router.push('/login')
+        this.$confirm('是否退出当前账号？', '提示', {
+          confirmButtonText: '确定',
+          cancleButtonText: '取消',
+          type: 'warning'
+        })
+        .then(() => {
+          localStorage.removeItem('user')
+          this.$router.push('/login')
+          this.$message({
+            type: 'success',
+            message: '退出成功'
+          })
+        })
+        .catch(() => {})
       }
+    },
+    created(){
+      this.user = JSON.parse(localStorage.getItem('user'))
     }
 };
 </script>
